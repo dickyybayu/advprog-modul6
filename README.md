@@ -22,3 +22,10 @@ This implementation required modifying the `handle_connection` function to check
 
 ![Milestone 3 screen capture](assets/images/milestone3.png)
 
+
+## Commit 4 Reflection Notes
+
+
+In this milestone, I implemented a simulation of a slow request by introducing a delay in handling certain HTTP requests. Specifically, I modified the `handle_connection` function to recognize requests for `/sleep` and introduced a `thread::sleep` function to delay the response by 10 seconds. This simulation helped me understand how a single-threaded web server processes incoming connections sequentially, causing delays for other requests when one request takes longer to complete.
+
+By running the server and opening two browser windows—one accessing `/sleep` and another accessing the root path `/`, I observed that the second request had to wait for the first one to finish, highlighting the limitations of single-threaded request handling. This reinforced my understanding of concurrency issues in web servers and the importance of multi-threading or asynchronous processing for improving responsiveness.
