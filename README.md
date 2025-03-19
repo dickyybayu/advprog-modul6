@@ -37,3 +37,9 @@ In this milestone, I implemented a **ThreadPool** to improve server efficiency i
 The **ThreadPool** uses a **message-passing mechanism** with an **mpsc (multi-producer, single-consumer) channel** to distribute tasks to worker threads. Additionally, a **Mutex** ensures safe access to the job queue, while **Arc (Atomic Reference Counting)** allows multiple workers to access the queue simultaneously. Each worker runs in a continuous loop, waiting for jobs to be executed.
 
 The main advantages of this approach include resource optimization, avoiding **thread explosion**, and reducing unnecessary context switching. By using a **ThreadPool**, the server can handle multiple requests in parallel without consuming excessive memory.
+
+## Commit Bonus Reflection Notes
+
+In this bonus task, I improved the `ThreadPool` implementation by replacing the `new` function with a `build` function. The goal of this change was to enhance error handling and provide better feedback in case of invalid pool size. Instead of panicking when given a zero-sized pool, the `build` function returns a `Result` type, allowing the caller to handle the error gracefully.
+
+Through this task, I gained a deeper understanding of how Rust handles errors using `Result` and how to design constructors that return meaningful error messages.
